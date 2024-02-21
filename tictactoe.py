@@ -1,13 +1,24 @@
-
 def print_taulell(partida):
     print("       0   1   2")
     print(f"   0 | {partida[0][0]} | {partida[0][1]} | {partida[0][2]} |")
     print(f"   1 | {partida[1][0]} | {partida[1][1]} | {partida[1][2]} |")
     print(f"   2 | {partida[2][0]} | {partida[2][1]} | {partida[2][2]} |")
 
+def ha_guanyat(partida):
+    # Comprovar files i columnes
+    for i in range(3):
+        if partida[i][0] == partida[i][1] == partida[i][2] == ' X ':
+            return True  
+        if partida[0][i] == partida[1][i] == partida[2][i] == ' X ':
+            return True 
 
-def ha_guanyat(partid):
-    partida = [[' X ',' X ',' X '],[' X',' X ',' X '],[' X ',' X ',' X ']]
+    # Comprovar diagonals
+    if partida[0][0] == partida[1][1] == partida[2][2] == ' X ':
+        return True
+    if partida[0][2] == partida[1][1] == partida[2][0] == ' X ':
+        return True  
+
+    return False
 
 
 # simbol1 = "X"
@@ -32,8 +43,10 @@ while True:
 
     print_taulell(partida)
 
-    if ha_guanyat(partid):
-        print(noms[jugador], "HS GUANYAAAAT!!!!")
+    
+
+    if ha_guanyat(partida):
+        print(noms[jugador], "HAS GUANYAAAAT!!!!")
         break
     if jugador == 0:
         jugador = 1
@@ -41,13 +54,7 @@ while True:
         jugador = 0
     
 
-    
-    
 
-
-
-#import pygame
-''''''
 '''
 
 fitxers
