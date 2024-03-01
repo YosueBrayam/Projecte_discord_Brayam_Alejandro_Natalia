@@ -1,3 +1,6 @@
+
+from login import login
+
 # Códigos de formato ANSI para colores del texto
 RED = '\033[91m'
 GREEN = '\033[92m'
@@ -56,16 +59,36 @@ print_taulell(partida)
 
 moviments_realitzats = 0
 max_moviments = 3 * 3  # 3x3 table
-
+#Ubicar la fila 
 while True:
     print(noms[jugador], "jugues tu")
-    fila = int(input("Quina fila (0,1,2)? "))
-    col = int(input("Quina col (0,1,2)? "))
+    fila = ""
+    while fila not in ['0','1','2']:
+    
+       fila = input("Quina fila (0,1,2)? ")
+       if fila not in ['0','1','2']:
+           print("El valor ha de ser 0,1,2!!!!")
+       else: 
+           fila = int(fila)
+           break
+    #Ubicar la cola
+    col = ""
+    while col not in ['0','1','2']:
 
+        col = input ("Quina cola (0,1,2)? ")
+        if col not in ['0','1','2']:
+            print("El valor ha de ser 0,1,2!!!!")
+        else:
+            col = int(col)
+            break
+      
+      #Detecció de casella ocupada
     if not es_moviment_valid(partida, fila, col):
         print("Moviment no vàlid. La casella ja està ocupada.")
         continue
 
+
+    
     partida[fila][col] = simbols[jugador]
     moviments_realitzats += 1
 
@@ -84,79 +107,3 @@ while True:
     else:
         jugador = 0
 
-'''
-
-fitxers
-
-def guarda_historial(j1,j2)
-    open file 
-    genera timestamp (202402161827)
-    write(202402161827-j1-j2-qui guanya)
-    
-def llista_historial()
-    open file()
-    for.... read
-        PRINT 1-    202402161827 ...
-        2.202402161827....
-        3.202402161827
-def recupera_punts(nom)
-    return punts 
-
-def guarda_punts(nom, punts)
-
-def compra_punts(nom)
-    input(targeta)
-    input(caducitat)
-    input(punts) 5
-    if    API---> openurl
-        saldo = recupera_punts(nom)
-        saddo = saldo + punts
-
-        guarda_punts(nom,saldo)
-    else    
-        error
-
-
-
-
-
-
-
-***************************************
-
-3 EN RALLA
-
-mostra menu
-   def print_menu()
-
-
-1-nova partida
-input demana nom j1
-input jug2
-
-recupera saldo
-print saldo
-    nova partida x=yosue (11p) vs O=alejandro (17p)
-       A   B   C
-   1 |   |   |   |
-   2 |   |   |   |
-   3 |   |   |   |
-
-    yosue, jugues tu. Posicio? B2
-
-       A   B   C
-   1 |   |   |   |
-   2 |   | X |   |
-   3 |   |   |   |
-
-   alejandro, jugues tu. Posicio?
-
-
-   def print_taulell(partida)
-
-
-
-
-
-
-'''
